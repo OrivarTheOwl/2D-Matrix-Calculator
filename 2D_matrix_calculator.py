@@ -1,5 +1,3 @@
-
-
 class MatrixOperations:
 
     # Creates a matrix based on user input
@@ -12,6 +10,9 @@ class MatrixOperations:
                 column_count = int(input("Column count: "))
             except ValueError:
                 print("Invalid Input")
+                continue
+            if row_count < 1 or column_count < 1:
+                print("Matrix must have dimensions of at least 1x1")
                 continue
             break
         print(f"Matrix Dimensions: {row_count}x{column_count}\n")
@@ -122,7 +123,6 @@ class MatrixOperations:
             print("Matrix is not invertible")
             return
         
-        
         # Calculates the inverse flattened matrix with the determinant and adjoint
         multiplied_matrix = MatrixOperations.multiply_by_constant(determinant_fraction, flattened_adjoint_matrix)
         # Unflattens for the proper inverse matrix
@@ -215,7 +215,6 @@ class MatrixOperations:
                     matrix_of_minors.append(current_list[0])
                 else:
                     matrix_of_minors.append(MatrixOperations.calculate_determinant(current_list))
-                
                 current_list = []
 
         return matrix_of_minors
